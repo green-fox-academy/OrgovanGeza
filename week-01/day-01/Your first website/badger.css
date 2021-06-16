@@ -1,0 +1,93 @@
+
+body{
+/* WHEN I SELECTED THE FONT IN GOOGLE FONTS, IT WILL PROVIDE THE FOLLOWING LINE TO BE PASTED: */
+    font-family: 'Inter', sans-serif;
+    color: white;
+    margin: 0;
+    background-color: #222;
+}
+
+header{
+    background-color: black;
+    height: 60px;
+    color: white;
+}
+
+header .icon{
+    fill: white;
+}
+
+main{
+    width: 1120px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+main section article{
+    width: 60%;
+}
+
+main section aside{
+    width: 30%;
+
+}
+
+ul{
+    margin: 0;
+}
+
+li{
+    display: inline;
+}
+
+img{
+
+}
+
+#logo{
+    height: 40px;
+}
+
+.icon{
+    height: 30px;
+    width: 30px;
+}
+
+.btn{
+    text-decoration: none;
+    background-color: #333;
+    color: #8DF;
+    padding: 10px;
+    border-radius: 5px; /*CORNERED EDGES*/
+}
+
+.btn:hover{
+    background-color: #113354;
+}
+
+aside{
+    background-color: tomato;
+}
+
+main section{
+    display: flex;
+}
+
+.inline a,p{ 
+    display: inline;
+}
+
+a {
+    color: #0fb;
+    text-decoration: none;
+}
+
+.highlighted-box{
+    border: 3px solid #087;
+    padding: 20px;
+    border-style: ;
+}
+
+.profile{
+    border-radius: 50%;
+}

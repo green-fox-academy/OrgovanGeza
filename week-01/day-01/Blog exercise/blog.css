@@ -1,0 +1,56 @@
+body{
+    font-family: 'Inter', sans-serif;
+    margin: 0px;
+}
+    
+header{
+    background-color: grey;
+    height: 60px;
+    display: flex; /* ezzel azt állítom be, hogy ő "okosan" kitalálja, hogy a szövegnek valószínűleg függőlegesen középen kellene lennie a dobozon belül */
+}      
+
+
+header h2{
+    margin: auto;
+    width: 1120px;
+    align-items: center; /*da a header-ben beállított display: flex; nem állította volna függőlegesen középre a tartalmat, akkor ez mindenképp berakja*/
+}
+
+main{
+    margin: auto;
+    width: 1120px;
+}
+
+.subtitle p{
+    font-size: 22px;
+
+}
+
+.btn{
+    text-decoration: none;
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+    border-radius: 5px; /*CORNERED EDGES*/
+    margin: 20px 0;
+}
+
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+
+.input-field{
+    border: solid 1px;
+    margin: 20px 0;
+    padding: 0px 10px 5px 5px;
+}
+
+.input-field p{
+    padding-left: 10px;
+}
+
+#title-input{
+    color: red;
+    width: fit-content;
+}
