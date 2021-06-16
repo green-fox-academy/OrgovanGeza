@@ -1,1 +1,2 @@
-So now I'm changing the content of this file to see if it is visigle on github after I push it.
+So now I'm changing the content of this file to see if it is visible on github after I push it.
+Additionally I'll correct my spelling mistake.
