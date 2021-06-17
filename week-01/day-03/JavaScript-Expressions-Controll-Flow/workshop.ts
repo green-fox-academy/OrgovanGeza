@@ -495,7 +495,7 @@ console.log(output2);
 
 let c: number = 123;
 let credits: number = 100;
-let isBonus: boolean = true;
+let isBonus: boolean = false;
 
 // if credits are at least 50,
 // and is_bonus is false decrement c by 2
@@ -503,31 +503,18 @@ let isBonus: boolean = true;
 // and is_bonus is false decrement c by 1
 // if is_bonus is true c should remain the same,
 
-/*
-if (isBonus==false) {
-    if (credits>=50) {
-        c-=2;
-    } else if (credits<50) {
-        c--;
-    }
-}else {
-    c=c;
-}
-console.log(c);
-
-/*
-if (credits>=50 && isBonus==false) {  
+if (credits>=50 && !isBonus) {  
     c-=2;
-} else if (credits<50 && isBonus==false) {
+} else if (credits<50 && !isBonus) {
     c--;
 }else {
     c=c;
 }
 console.log(c);
-*/
 
 
-let d: number =  9;
+
+let d: number =  8;
 let time: number = 120;
 let output3: string = '';
 
