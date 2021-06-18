@@ -25,6 +25,7 @@ for (let i=0;i<lineCount;i++){
 }
 console.log(baseline1)
 
+
 for (let i = 0; i < lineCount-2; i++) {
     let line = "";
     line += percent;
