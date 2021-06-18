@@ -1,6 +1,6 @@
 'use strict';
 
-let lineCount: number = 6;
+let lineCount: number = 9;
 
 // Write a program that draws a
 // square like this:
@@ -14,10 +14,10 @@ let lineCount: number = 6;
 //
 // The square should have as many lines as lineCount is
 
-
 let percent = '%';
 let space = ' ';
-let reset = '';
+let spaceCount = 0;
+
 
 let baseline1 ='';
 for (let i=0;i<lineCount;i++){
@@ -25,34 +25,20 @@ for (let i=0;i<lineCount;i++){
 }
 console.log(baseline1)
 
-
-let spaces = '';
-for (let k = 1;k<lineCount-1;k++){
-    for (let j = 1;j<lineCount-3;j++){
-        spaces+=space;
-    }console.log(percent,spaces,percent);
-    spaces = reset;
+for (let i = 0; i < lineCount-2; i++) {
+    let line = "";
+    line += percent;
+    for (let j = 0; j < spaceCount; j++) {
+        line += space;
+    }
+    line += percent;
+    for (let j = 0; j < lineCount - 3 - spaceCount; j++) {
+        line += space;
+    }
+    line += percent;
+    spaceCount++;
+    console.log(line);
 }
-
-
-
-// let spaces = '';
-// let percentages = '';
-
-// for (let i=1;i<lineCount+1;i++){
-//     for(let j=0;j<lineCount-i;j++){
-//         spaces+=space;
-//     }
-//     for(let k=0;k<i*2-1;k++){
-//         percentages+=percentage;
-//     }
-//     console.log(spaces+stars);
-//     spaces=reset;
-//     percentages=reset;
-// }
-
-
-
 
 
 let baseline2 ='';
@@ -60,4 +46,3 @@ for (let i=0;i<lineCount;i++){
     baseline2+=percent;
 }
 console.log(baseline2)
-
