@@ -1,6 +1,6 @@
 'use strict';
 
-let lineCount: number = 7;
+let lineCount: number = 15;
 
 // Write a program that draws a
 // diamond like this:
