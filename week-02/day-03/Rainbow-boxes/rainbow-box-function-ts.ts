@@ -16,11 +16,11 @@ let sqSize = (canvas.width>=canvas.height)? canvas.height : canvas.width;
 
 colors.forEach(function(color,i){
     ctx.fillStyle=color;
-    ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize/(i+1),sqSize/(i+1))
+    ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize-colors.length*i*colors.length,sqSize-colors.length*i*colors.length)
 });
 
 
 //sqSize/colors.length*i
 
 
-//ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize/(i+1),sqSize/(i+1))
+//ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize-colors.length*i*colors.length,sqSize-colors.length*i*colors.length)
