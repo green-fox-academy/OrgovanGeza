@@ -15,12 +15,7 @@ let colors = ["red","orange","yellow","green","blue","purple","pink"];
 let sqSize = (canvas.width>=canvas.height)? canvas.height : canvas.width;
 
 colors.forEach(function(color,i){
+    let helpVar = sqSize-(colors.length+0.5)*i*(colors.length+0.5);
     ctx.fillStyle=color;
-    ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize-colors.length*i*colors.length,sqSize-colors.length*i*colors.length)
+    ctx.fillRect((canvas.width-helpVar)/2,(canvas.height-helpVar)/2,helpVar,helpVar)
 });
-
-
-//sqSize/colors.length*i
-
-
-//ctx.fillRect((canvas.width-sqSize)/2,(canvas.height-sqSize)/2,sqSize-colors.length*i*colors.length,sqSize-colors.length*i*colors.length)
