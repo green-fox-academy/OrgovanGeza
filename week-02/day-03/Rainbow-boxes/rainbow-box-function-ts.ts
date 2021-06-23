@@ -15,7 +15,7 @@ let colors = ["red","orange","yellow","green","blue","purple","pink"];
 let sqSize = (canvas.width>=canvas.height)? canvas.height : canvas.width;
 
 colors.forEach(function(color,i){
-    let helpVar = sqSize-(colors.length+0.5)*i*(colors.length+0.5);
+    let helpVar = sqSize-(colors.length)*i*(colors.length);
     ctx.fillStyle=color;
     ctx.fillRect((canvas.width-helpVar)/2,(canvas.height-helpVar)/2,helpVar,helpVar)
 });
