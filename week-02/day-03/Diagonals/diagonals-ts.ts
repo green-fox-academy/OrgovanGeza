@@ -16,18 +16,15 @@ export {};
 const xStart = 0;
 const yStart = 0;
 
-const canvasWidth = 600;
-const canvasHeight = 400;
-
 function drawDiagonal (xStart : number, yStart: number){
-    let cornAx = 0;
-    let cornAy = 0;
-    let cornBx = canvasWidth;
-    let cornBy = 0;
-    let cornCx = canvasWidth;
-    let cornCy = canvasHeight;
-    let cornDx = 0;
-    let cornDy = canvasHeight;
+    const cornAy = 0;
+    const cornBx = canvas.width;
+    const cornBy = 0;
+    const cornCx = canvas.width;
+    const cornAx = 0;
+    const cornCy = canvas.height;
+    const cornDx = 0;
+    const cornDy = canvas.height;
 
     ctx.beginPath();
     ctx.strokeStyle = ((xStart==0 && yStart==0) ? "green" : "red");
