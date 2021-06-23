@@ -44,3 +44,4 @@ ctx.stroke();
 ctx.beginPath();
 ctx.arc(500, 500, 50, 0, Math.PI * 2);
 ctx.stroke();
+
