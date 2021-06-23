@@ -23,5 +23,5 @@ let drawSquare = (xStart: number, yStart:number) => {
 }
 
 for (let i=0; i<sqAmount; i++){
-    drawSquare(i*(sqWidth+10), 0)
+    drawSquare(i*(sqWidth+10), canvas.height/2-sqHeight)
 }
