@@ -11,19 +11,27 @@ export {};
 
 let size = 10;
 
+let sqDraver1 = (x:number,y:number,size:number) => { 
+    ctx.strokeRect(x*size,y*size,size,size)
+}
+
+let sqDraver2 = (x:number,y:number,size:number) => { 
+    ctx.fillRect(x*size,y*size,size,size)
+}
+
 for (let i=0;i<canvas.height/size;i++){
     for (let j = 0; j<canvas.width/size;j++){
         if (i%2===0){
             if (j%2===0){
-                ctx.strokeRect(j*size,i*size,size,size)
+                sqDraver1(j,i,size);
             } else {
-                ctx.fillRect(j*size,i*size,size,size)
+                sqDraver2(j,i,size);
             }
         }else {
             if (j%2===0){
-                ctx.fillRect(j*size,i*size,size,size)
+                sqDraver2(j,i,size);
             } else {
-                ctx.strokeRect(j*size,i*size,size,size)
+                sqDraver1(j,i,size);
             }
         }
     }
