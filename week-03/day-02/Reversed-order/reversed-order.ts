@@ -23,8 +23,8 @@ function lineOrderChanger (input:string){
 }
 
 function finalizer (input:string){
-    for (let i=input.length; i>=0; i--){
-        finalContent+=outputContent[i];
+    for (let i=input.length; i-1>=0; i--){
+        finalContent+=outputContent[i-1];
     }
     finalContent.replace("'n\'",'\n');
 }
