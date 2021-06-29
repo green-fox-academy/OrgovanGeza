@@ -19,6 +19,11 @@ function lineOrderChanger (input:string){
         }
         previousLineEndIndex=i+1;
     }
+    outputContent+='\n';
+
+    for (let k=inputContent.length; k> previousLineEndIndex; k--){
+        outputContent+=inputContent[k-1];
+    } 
     outputContent = outputContent.slice(1);
 }
 
