@@ -1,3 +1,4 @@
+import { strictEqual } from 'assert';
 import { Pokemon } from './Pokemon'
 
 let pokemonOfAsh: Pokemon[] = initializePokemon();
@@ -23,4 +24,12 @@ function initializePokemon(): Pokemon[] {
         new Pokemon('Pidgeot', 'flying', 'fighting'),
         new Pokemon('Kingler', 'water', 'fire')
     ];
+}
+
+function chooseEffective (poke1:Pokemon[], poke2:Pokemon) {
+    for (let i=0; i<poke1.length; i++){
+        if (poke1[i].isEffectiveAgainst(poke2)) {
+            return poke1[i].name;
+        }
+    }
 }
