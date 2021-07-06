@@ -8,12 +8,13 @@ import { StreamPriorityOptions } from "http2";
 class Plant {
     private _color: string;
     private _waterNeed: boolean = true;
-    private _waterLevel: Number;
+    private _waterLevel: number;
     waterNeedLevel: number;
+    type: string='';
 
     constructor(color: string, waterNeed: number, waterlevel?: number) {
-        this.color = color;
-        this.waterLevel = waterlevel || 0;
+        this._color = color;
+        this._waterLevel = waterlevel || 0;
         this.waterNeedLevel = waterNeed;
         this.waterNeedSetter(waterNeed);
     }
@@ -46,14 +47,14 @@ class Plant {
 }
 
 class Flower extends Plant {
-
+type : string = 'Flower'
     constructor(color: string, waterlevel?: number) {
         super(color, 5, waterlevel);
     }
 }
 
 class Tree extends Plant {
-
+    type : string = 'Tree'
     constructor(color: string, waterlevel?: number) {
         super(color, 10, waterlevel);
     }
@@ -69,10 +70,10 @@ class Garden {
 
     displayPlants() {
         for (let i = 0; i < this.plants.length; i++) {
-            let type = this.plants[i].waterNeedLevel === 5 ? 'Flower' : 'Tree';
             let thirst = this.plants[i].waterNeed ? 'needs water' : 'doesn\'t need water';
-            console.log(`The ${this.plants[i].color} ${type} ${thirst}`);
+            console.log(`The ${this.plants[i].color} ${this.plants[i].type} ${thirst}`);
         }
+        console.log('');
     }
 
     private _singleWatering(waterAmount: number) {
@@ -100,6 +101,9 @@ class Garden {
         }
 
         console.log('Watering with ', waterAmount);
+        if (thirstyPlants === 0){
+            console.log('NO PLANT WAS THIRSTY, I DIDNT\'T WATER THEM');
+        }
         this.displayPlants();
 
     }
@@ -125,7 +129,6 @@ let tree1 = new Tree ('purple', 20);
 garden.addPlant(tree1);
 let tree2 = new Tree ('orange');
 garden.addPlant(tree2);
-
 
 garden.displayPlants();
 garden.watering();
