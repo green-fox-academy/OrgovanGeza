@@ -9,12 +9,14 @@ class Plant {
     private _color: string;
     private _waterNeed: boolean = true;
     private _waterLevel: number;
+    waterAbsorptionRatio: number;
     waterNeedLevel: number;
-    type: string='';
+    type: string = '';
 
-    constructor(color: string, waterNeed: number, waterlevel?: number) {
+    constructor(color: string, waterNeed: number, waterAbsorptionRatio: number, waterlevel?: number) {
         this._color = color;
         this._waterLevel = waterlevel || 0;
+        this.waterAbsorptionRatio = waterAbsorptionRatio;
         this.waterNeedLevel = waterNeed;
         this.waterNeedSetter(waterNeed);
     }
@@ -47,16 +49,18 @@ class Plant {
 }
 
 class Flower extends Plant {
-type : string = 'Flower'
+    type: string = 'Flower'
+
     constructor(color: string, waterlevel?: number) {
-        super(color, 5, waterlevel);
+        super(color, 5, 0.75, waterlevel);
     }
 }
 
 class Tree extends Plant {
-    type : string = 'Tree'
+    type: string = 'Tree'
+
     constructor(color: string, waterlevel?: number) {
-        super(color, 10, waterlevel);
+        super(color, 10, 0.4, waterlevel);
     }
 }
 
@@ -89,45 +93,37 @@ class Garden {
             let waterPerPlant: number = waterAmount / thirstyPlants;
             for (let k = 0; k < this.plants.length; k++) {
                 if (this.plants[k].waterNeed === true) {
-                    if (this.plants[k].waterNeedLevel === 5) {
-                        this.plants[k].waterLevel += (waterPerPlant * 0.75);
-                        this.plants[k].waterNeedSetter(this.plants[k].waterNeedLevel)
-                    } else if (this.plants[k].waterNeedLevel === 10) {
-                        this.plants[k].waterLevel += (waterPerPlant * 0.40);
-                        this.plants[k].waterNeedSetter(this.plants[k].waterNeedLevel)
-                    }
+                    this.plants[k].waterLevel += (waterPerPlant * this.plants[k].waterAbsorptionRatio);
+                    this.plants[k].waterNeedSetter(this.plants[k].waterNeedLevel)
                 }
             }
         }
 
         console.log('Watering with ', waterAmount);
-        if (thirstyPlants === 0){
+        if (thirstyPlants === 0) {
             console.log('NO PLANT WAS THIRSTY, I DIDNT\'T WATER THEM');
         }
         this.displayPlants();
-
     }
 
-    watering(){
+    watering() {
         this._singleWatering(40);
         this._singleWatering(70);
     }
-
 }
-
 
 
 
 let garden = new Garden();
 
-let flower1 = new Flower ('yellow', 6);
+let flower1 = new Flower('yellow', 6);
 garden.addPlant(flower1);
-let flower2 = new Flower ('blue');
+let flower2 = new Flower('blue');
 garden.addPlant(flower2);
 
-let tree1 = new Tree ('purple', 20);
+let tree1 = new Tree('purple', 20);
 garden.addPlant(tree1);
-let tree2 = new Tree ('orange');
+let tree2 = new Tree('orange');
 garden.addPlant(tree2);
 
 garden.displayPlants();
