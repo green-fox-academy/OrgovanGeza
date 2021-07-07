@@ -32,3 +32,8 @@ test('we have to see a \'true\' boolean, even if we add 2 space and 3 space\'', 
     t.equal(isAnagram('  ','   '),true)
     t.end();
 });
+
+test('we have to see a \'true\' boolean, even if one string has upper-case, and the other doesn\'t', t => {
+    t.equal(isAnagram('Tea','eat'),true)
+    t.end();
+});
