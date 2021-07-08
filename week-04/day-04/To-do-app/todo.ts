@@ -47,6 +47,8 @@ if (args.length === 0) {
     usageInfos();
 } else if (args[0] === '-l') {
     listItems();
-} else if (args[0] == '-a') {
+} else if (args[0] === '-a' && args.length === 2) {
     addTask(args[1]);
+} else if (args[0] === '-a' && args.length !== 2) {
+    console.log('Unable to add: no, or not only one task provided');
 }
