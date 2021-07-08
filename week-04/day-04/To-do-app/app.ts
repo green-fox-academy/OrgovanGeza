@@ -23,22 +23,33 @@ let usageInfos = (): void => {
 
 if (args.length === 0) {
     usageInfos();
-} else if (args[0] === '-l') {
+}
+else if (args[0] === '-l') {
     toDoList.listItems();
-} else if (args[0] === '-a' && args.length === 2) {
+}
+else if (args[0] === '-a' && args.length === 2) {
     toDoList.addTask(args[1], todoFile);
 } else if (args[0] === '-a' && args.length !== 2) {
     console.log('Unable to add: no, or not only one task provided');
-} else if (args[0] === '-r' && args.length === 2) {
+}
+else if (args[0] === '-r' && args.length === 2) {
     let listNo = +args[1];
-    if (isNaN(listNo)!==true){
-    toDoList.removeTask(listNo,todoFile)
-    }else {
+    if (isNaN(listNo) !== true) {
+        toDoList.removeTask(listNo, todoFile)
+    } else {
         console.log('Unable to remove: index is not a number');
-    }
-}else if (args[0] === '-r' && args.length !== 2) {
+    }} else if (args[0] === '-r' && args.length !== 2) {
     console.log('Unable to remove: no index provided');
-}else {
+}
+else if (args[0] === '-c' && args.length === 2) {
+    let listNo = +args[1];
+    if (isNaN(listNo) !== true) {
+        toDoList.checkTask(listNo, todoFile)
+    } else {
+        console.log('Unable to check: index is not a number');
+    }} else if (args[0] === '-c' && args.length !== 2) {
+        console.log('Unable to check: no index provided');
+}
+else {
     console.log('Unsupported argument');
-    
 }

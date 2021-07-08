@@ -67,9 +67,37 @@ export class TodoList {
             }
 
             fs.writeFileSync(fileName, shortenedList);
-            
+
         } else {
             console.log('Unable to remove: index is out of bound');
         }
+    }
+
+    checkTask = (taskNo: number, fileName: string): void => {
+        // this.toDoList[taskNo - 1].check; -->doesn't work :( )
+        if (taskNo <= this.toDoList.length) {
+
+            if (this.toDoList[taskNo - 1].isDone) {
+                this.toDoList[taskNo - 1].isDone = false;
+            } else {
+                this.toDoList[taskNo - 1].isDone = true;
+            }
+
+            let modifiedList = '';
+
+            for (let i = 0; i < this.toDoList.length; i++) {
+                let isDone = this.toDoList[i].isDone ? '+;' : '-;';
+
+                if (i !== this.toDoList.length - 1) {
+                    modifiedList += isDone + this.toDoList[i].name + '\n'
+                } else {
+                    modifiedList += isDone + this.toDoList[i].name
+                }
+            }
+            fs.writeFileSync(fileName, modifiedList);
+        } else {
+            console.log('Unable to remove: index is out of bound');
+        }
+
     }
 }
