@@ -31,7 +31,6 @@ export class TodoList {
     }
 
     addTask = (taskToBeAdded: string, fileName: string): void => {
-        //  let taskToAdd = '-;' + taskToBeAdded;
         let newTask = new Task(taskToBeAdded, false);
         this.toDoList.push(newTask);
 

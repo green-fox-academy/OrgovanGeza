@@ -14,7 +14,7 @@ export class Task {
     }
 
     check(): void {
-        this.isDone = this.isDone ? false : true;
+        this.isDone = !this.isDone;
     }
 
 }

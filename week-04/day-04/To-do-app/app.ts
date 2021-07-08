@@ -20,7 +20,6 @@ let usageInfos = (): void => {
 }
 
 
-
 if (args.length === 0) {
     usageInfos();
 }
@@ -29,13 +28,15 @@ else if (args[0] === '-l') {
 }
 else if (args[0] === '-a' && args.length === 2) {
     toDoList.addTask(args[1], todoFile);
+    toDoList.listItems();
 } else if (args[0] === '-a' && args.length !== 2) {
     console.log('Unable to add: no, or not only one task provided');
 }
 else if (args[0] === '-r' && args.length === 2) {
     let listNo = +args[1];
     if (isNaN(listNo) !== true) {
-        toDoList.removeTask(listNo, todoFile)
+        toDoList.removeTask(listNo, todoFile);
+        toDoList.listItems();
     } else {
         console.log('Unable to remove: index is not a number');
     }} else if (args[0] === '-r' && args.length !== 2) {
@@ -44,7 +45,8 @@ else if (args[0] === '-r' && args.length === 2) {
 else if (args[0] === '-c' && args.length === 2) {
     let listNo = +args[1];
     if (isNaN(listNo) !== true) {
-        toDoList.checkTask(listNo, todoFile)
+        toDoList.checkTask(listNo, todoFile);
+        toDoList.listItems();
     } else {
         console.log('Unable to check: index is not a number');
     }} else if (args[0] === '-c' && args.length !== 2) {
