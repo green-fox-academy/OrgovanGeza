@@ -19,31 +19,6 @@ let usageInfos = (): void => {
     console.log('    -c   Completes an task');
 }
 
-/*
-let listItems = (): void => {
-    const fileItems = fs.readFileSync(todoFile, 'utf-8').split('\n');
-
-    if (fileItems.length === 1 && fileItems[0] === '') {
-        console.log('No todos for today! :)');
-    } else {
-        for (let i = 0; i < fileItems.length; i++) {
-            console.log(i + 1, ' - ', fileItems[i]);
-        }
-    }
-}
-*/
-
-/*
-let addTask = (taskToBeAdded: string): void => {
-    const fileItems = fs.readFileSync(todoFile, 'utf-8');
-    if (fileItems === '') {
-        fs.writeFileSync(todoFile, taskToBeAdded);
-    } else {
-        const extendedList = fileItems + '\n' + taskToBeAdded;
-        fs.writeFileSync(todoFile, extendedList);
-    }
-}
-*/
 
 
 if (args.length === 0) {
@@ -54,7 +29,13 @@ if (args.length === 0) {
     toDoList.addTask(args[1], todoFile);
 } else if (args[0] === '-a' && args.length !== 2) {
     console.log('Unable to add: no, or not only one task provided');
-} else if (args[0] === '-r') {
-    let listNo :number = +args[1];
+} else if (args[0] === '-r' && args.length === 2) {
+    let listNo = +args[1];
+    if (isNaN(listNo)!==true){
     toDoList.removeTask(listNo,todoFile)
+    }else {
+        console.log('Unable to remove: index is not a number');
+    }
+}else if (args[0] === '-r' && args.length !== 2) {
+    console.log('Unable to remove: no index provided');
 }

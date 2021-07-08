@@ -47,24 +47,29 @@ export class TodoList {
     }
 
     removeTask = (taskNo: number, fileName: string): void => {
-        let shortenedList = '';
+        if (taskNo <= this.toDoList.length) {
+            let shortenedList = '';
 
-        for (let i = 0; i < this.toDoList.length; i++) {
-            if (this.toDoList[i].id !== taskNo) {
-                let isDone = this.toDoList[i].isDone ? '+;' : '-;';
+            for (let i = 0; i < this.toDoList.length; i++) {
+                if (this.toDoList[i].id !== taskNo) {
+                    let isDone = this.toDoList[i].isDone ? '+;' : '-;';
 
-                if (i !== this.toDoList.length - 1){
-                    shortenedList += isDone + this.toDoList[i].name + '\n'
-                } else {
-                    shortenedList += isDone + this.toDoList[i].name
+                    if (i !== this.toDoList.length - 1) {
+                        shortenedList += isDone + this.toDoList[i].name + '\n'
+                    } else {
+                        shortenedList += isDone + this.toDoList[i].name
+                    }
                 }
             }
-        }
 
-        if (this.toDoList.length === taskNo){
-            shortenedList = shortenedList.slice(0,shortenedList.length-2);
-        }
+            if (this.toDoList.length === taskNo) {
+                shortenedList = shortenedList.slice(0, shortenedList.length - 2);
+            }
 
-        fs.writeFileSync(fileName, shortenedList);
+            fs.writeFileSync(fileName, shortenedList);
+            
+        } else {
+            console.log('Unable to remove: index is out of bound');
+        }
     }
 }
