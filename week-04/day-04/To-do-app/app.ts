@@ -51,7 +51,10 @@ if (args.length === 0) {
 } else if (args[0] === '-l') {
     toDoList.listItems();
 } else if (args[0] === '-a' && args.length === 2) {
-    toDoList.addTask(args[1],todoFile);
+    toDoList.addTask(args[1], todoFile);
 } else if (args[0] === '-a' && args.length !== 2) {
     console.log('Unable to add: no, or not only one task provided');
+} else if (args[0] === '-r') {
+    let listNo :number = +args[1];
+    toDoList.removeTask(listNo,todoFile)
 }

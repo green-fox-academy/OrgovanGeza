@@ -1,5 +1,2 @@
-+;Feed the monkeys
--;Feed the monkeys
-+;Feed the monkeys
--;Feed the monkeys
--;mennyé
+-;Második
+-;Második
