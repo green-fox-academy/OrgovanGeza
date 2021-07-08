@@ -38,4 +38,7 @@ if (args.length === 0) {
     }
 }else if (args[0] === '-r' && args.length !== 2) {
     console.log('Unable to remove: no index provided');
+}else {
+    console.log('Unsupported argument');
+    
 }
