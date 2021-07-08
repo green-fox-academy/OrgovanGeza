@@ -4,7 +4,7 @@ export class Task {
     static taskNo: number = 0;
 
     name: string = '';
-    isDone: boolean;
+    isDone: boolean = false;
     id: number = 0;
 
     constructor(name: string, isDone: boolean) {

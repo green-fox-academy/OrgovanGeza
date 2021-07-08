@@ -1,12 +1,12 @@
 'use strict';
 
 import { Task } from "./task";
-import { TodoList} from "./todoList";
+import { TodoList } from "./todoList";
 
 const args: string[] = process.argv.slice(2);
 const fs = require('fs');
 const todoFile = 'todo.txt';
-let toDoList = new TodoList (todoFile);
+let toDoList = new TodoList(todoFile);
 
 let usageInfos = (): void => {
     console.log('Command Line Todo application');
@@ -33,7 +33,7 @@ let listItems = (): void => {
 }
 */
 
-
+/*
 let addTask = (taskToBeAdded: string): void => {
     const fileItems = fs.readFileSync(todoFile, 'utf-8');
     if (fileItems === '') {
@@ -43,6 +43,7 @@ let addTask = (taskToBeAdded: string): void => {
         fs.writeFileSync(todoFile, extendedList);
     }
 }
+*/
 
 
 if (args.length === 0) {
@@ -50,7 +51,7 @@ if (args.length === 0) {
 } else if (args[0] === '-l') {
     toDoList.listItems();
 } else if (args[0] === '-a' && args.length === 2) {
-    addTask(args[1]);
+    toDoList.addTask(args[1],todoFile);
 } else if (args[0] === '-a' && args.length !== 2) {
     console.log('Unable to add: no, or not only one task provided');
 }

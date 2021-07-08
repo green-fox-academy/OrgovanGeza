@@ -8,22 +8,14 @@ export class TodoList {
 
     constructor(file: string) {
         let fileItems: string[] = fs.readFileSync(file, 'utf-8').split('\n');
-        if (fileItems.length !== 1) {
+        if (fileItems.length > 0 && fileItems[0] !== '') {
             for (let i = 0; i < fileItems.length; i++) {
-                let splitted = fileItems[i].split('+' || '-', 2)
+                let splitted = fileItems[i].split(';');
                 let status = splitted[0] === '+';
                 let name = splitted[1];
-
                 let task: Task = new Task(name, status);
                 this.toDoList.push(task);
             }
-        } else if (fileItems.length === 1 && fileItems[0] !== '') {
-            let splitted = fileItems[0].split('+' || '-', 2)
-            let status = splitted[0] === '+';
-            let name = splitted[1];
-
-            let task: Task = new Task(name, status);
-            this.toDoList.push(task);
         }
     }
 
@@ -38,9 +30,20 @@ export class TodoList {
         }
     }
 
-    addTask = (taskToBeAdded: string): void => {
-        let newTask = new Task('-'+taskToBeAdded, false);
+    addTask = (taskToBeAdded: string, fileName: string): void => {
+        //  let taskToAdd = '-;' + taskToBeAdded;
+        let newTask = new Task(taskToBeAdded, false);
         this.toDoList.push(newTask);
+
+        let extendedList = '';
+        for (let i = 0; i < this.toDoList.length - 1; i++) {
+            let isDone = this.toDoList[i].isDone ? '+;' : '-;';
+            extendedList += isDone + this.toDoList[i].name + '\n'
+        }
+        let isDone2 = this.toDoList[this.toDoList.length-1].isDone ? '+;' : '-;';
+        extendedList += isDone2 + this.toDoList[this.toDoList.length-1].name;
+        fs.writeFileSync(fileName, extendedList);
     }
+
 
 }
