@@ -15,8 +15,8 @@ let usageInfos = (): void => {
     console.log('Command line arguments:');
     console.log('    -l   Lists all the tasks');
     console.log('    -a   Adds a new task');
-    console.log('    -r   Removes an task');
-    console.log('    -c   Completes an task');
+    console.log('    -r   Removes a task');
+    console.log('    -c   Completes a task');
 }
 
 
@@ -36,7 +36,6 @@ else if (args[0] === '-r' && args.length === 2) {
     let listNo = +args[1];
     if (isNaN(listNo) !== true) {
         toDoList.removeTask(listNo, todoFile);
-        toDoList.listItems();
     } else {
         console.log('Unable to remove: index is not a number');
     }} else if (args[0] === '-r' && args.length !== 2) {
