@@ -40,7 +40,7 @@ noBusiness = [noBusiness[0], noBusiness[1], noBusiness[3]]
 */
 
 //SOLUTION 2:
-let noBusiness = document.querySelectorAll('div')
+let noBusiness = document.querySelectorAll('div.asteroid')
 
 for (let e of noBusiness) {
     console.log(e);
