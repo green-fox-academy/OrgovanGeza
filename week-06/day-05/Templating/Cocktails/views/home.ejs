@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Coctails</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>
+        Coctails
+    </h1>
+
+    <ul class="alcohols">
+        <% for (let alcohol of alcoholList) { %>
+            <li>
+                <%= alcohol %>
+            </li>
+            <% } %>
+    </ul>
+
+    <table class="cocktails">
+        <tr class=>
+            <th>NAME</th>
+            <th>PRICE</th>
+        </tr>
+
+        <% for (let i=0; i<cocktails.length; i++) { %>
+            <tr>
+                <td>
+                    <%= cocktails[i].name %>
+                    <% if(!cocktails[i].isAlcoholic) { %>
+                    <%= ' (non-alcoholic)' %>
+                    <% } %>
+                    <br>
+                    <%= cocktails[i].contains %>
+                </td>
+                <td>
+                    <%= cocktails[i].price +' Ft' %>
+                </td>
+            </tr>
+            <% } %>
+
+    </table>
+</body>
+
+</html>

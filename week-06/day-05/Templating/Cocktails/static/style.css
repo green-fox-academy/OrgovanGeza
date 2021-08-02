@@ -1,0 +1,33 @@
+body {
+    color: tomato;
+  }
+
+.cocktails{
+    width:600px;
+  }
+
+/* table, th, td{
+    border: 1px solid black;
+  } */
+
+  table tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  table tr:nth-child(odd) {
+   background-color: #fff;
+  }
+
+  th{
+      background: black;
+      text-align: center;
+      color: white;
+  }
+
+  table td:nth-child(even){
+    text-align: center;
+  }
+
+  .alcohols {
+      list-style: none;
+  }
