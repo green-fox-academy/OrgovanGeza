@@ -45,16 +45,13 @@ const allBookData = `SELECT book_name, aut_name, cate_descrip, pub_name, book_pr
 
 
 app.get('/books/full', (req, res) => {
-    const title = req.query.title;
-    const author = req.query.author;
-    const category = req.query.category;
-    const publisher = req.query.publisher;
-    const plt = req.query.plt;
-    const pgt = req.query.pgt;
 
+    const querryFilters = req.query;
 
-    if (category === undefined && publisher === undefined && plt === undefined && pgt === undefined && title === undefined && author === undefined) {
-        conn.query(`${allBookData};`, (err, rows) => {
+    let filter = Object.keys(querryFilters).length === 0 ? `` : `WHERE `;
+
+    function filterTable(filter) {
+        conn.query(`${allBookData} ${filter} `, (err, rows) => {
             if (err) {
                 console.log(err);
                 res.send(500); // automatically returns
@@ -64,73 +61,34 @@ app.get('/books/full', (req, res) => {
         })
     }
 
-    if (author !== undefined){
-        conn.query(`${allBookData}
-                    WHERE aut_name LIKE '%${author}%';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+
+    if (querryFilters.author !== undefined) {
+        filter += ` aut_name LIKE '%${querryFilters.author}%' AND`;
     }
 
-    if (title !== undefined){
-        conn.query(`${allBookData}
-                    WHERE book_name LIKE '%${title}%';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+    if (querryFilters.title !== undefined) {
+        filter += ` book_name LIKE '%${querryFilters.title}%' AND`;
     }
 
-    if (category !== undefined){
-        conn.query(`${allBookData}
-                    WHERE cate_descrip = '${category}';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+    if (querryFilters.category !== undefined) {
+        filter += ` cate_descrip = '${querryFilters.category}' AND`;
     }
 
-    if (publisher !== undefined){
-        conn.query(`${allBookData}
-                    WHERE pub_name LIKE '%${publisher}%';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+    if (querryFilters.publisher !== undefined) {
+        filter += ` pub_name LIKE '%${querryFilters.publisher}%' AND`;
     }
 
-    if (plt !== undefined){
-        conn.query(`${allBookData}
-                    WHERE book_price < '${plt}';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+    if (querryFilters.plt !== undefined) {
+        filter += ` book_price < '${querryFilters.plt}' AND`;
     }
 
-    if (pgt !== undefined){
-        conn.query(`${allBookData}
-                    WHERE book_price > '${pgt}';`, (err, rows) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).render('homeFull', { fullBooks: rows })
-        })
+    if (querryFilters.pgt !== undefined) {
+        filter += ` book_price > '${querryFilters.pgt}' AND`;
     }
 
+    filter = filter.slice(0, filter.length-3)
+    filter += `;`
+    filterTable(filter);
 })
-
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
