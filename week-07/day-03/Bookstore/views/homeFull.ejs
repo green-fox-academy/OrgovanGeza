@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore home</title>
+</head>
+
+<body>
+    <h1>Here are all the infos of the books:</h1>
+    <table>
+        <tr>
+            <th>Title of book</th>
+            <th>Name of author</th>
+            <th>Category</th>
+            <th>Name of publisher</th>
+            <th>Price</th>
+        </tr>
+
+        <% for (let i = 0; i<fullBooks.length; i++) { %>
+            <tr>
+                <td><%= fullBooks[i].book_name %></td>
+                <td><%= fullBooks[i].aut_name %></td>
+                <td><%= fullBooks[i].cate_descrip %></td>
+                <td><%= fullBooks[i].pub_name %></td>
+                <td><%= fullBooks[i].book_price %></td>
+            </tr>
+        <% } %>
+
+    </table>
+
+</body>
+
+</html>
