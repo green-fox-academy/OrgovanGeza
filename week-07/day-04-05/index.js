@@ -26,18 +26,15 @@ conn.connect((err) => {
     console.log('Connection is as strong as a badger');
 })
 
-function response(responseQuery, res) {
-    conn.query(responseQuery, (err, posts) => {
+app.get('/posts', (req, res) => {
+
+    conn.query(`SELECT * FROM reddit.posts;`, (err, posts) => {
         if (err) {
             console.log(err);
             res.send(500);
         }
         res.status(200).json({ posts });
     })
-}
-
-app.get('/posts', (req, res) => {
-    response(`SELECT * FROM reddit.posts;`, res);
 })
 
 app.post('/posts', (req, res) => {
