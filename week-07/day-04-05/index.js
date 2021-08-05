@@ -18,6 +18,11 @@ const conn = mysql.createConnection({
     database: 'reddit'
 })
 
+function sendError(err) {
+    console.log(err);
+    res.send(500);
+}
+
 conn.connect((err) => {
     if (err) {
         console.error('Cannot connect to database,', err);
@@ -30,8 +35,7 @@ app.get('/posts', (req, res) => {
 
     conn.query(`SELECT * FROM reddit.posts;`, (err, posts) => {
         if (err) {
-            console.log(err);
-            res.send(500);
+            sendError(err);
         }
         res.status(200).json({ posts });
     })
@@ -46,11 +50,46 @@ app.post('/posts', (req, res) => {
     conn.query(`INSERT INTO posts (title, url, timestamp) 
                VALUES (?,?,?);`, [`${newPost.title}`, `${newPost.url}`, `${newPost.timestamp}`], (err, result) => {
         if (err) {
-            console.log(err);
-            res.send(500);
+            sendError(err);
         }
         newPost.id = result.insertId;
         res.status(200).json(newPost);
+    })
+
+})
+
+app.put('/posts/:id/upvote', (req, res) => {
+    const upvotedPostId = req.params.id;
+
+    conn.query(`UPDATE posts SET score = score +1 WHERE (id = ${upvotedPostId});`, (err) => {
+        if (err) {
+            sendError(err);
+        }
+    });
+
+    conn.query(`SELECT * FROM posts WHERE id = ${upvotedPostId};`, (err, result) => {
+        if (err) {
+            sendError(err);
+        }
+        res.status(200).json(result[0])
+    })
+
+})
+
+app.put('/posts/:id/downvote', (req, res) => {
+    const downvotedPostId = req.params.id;
+
+    conn.query(`UPDATE posts SET score = score -1 WHERE (id = ${downvotedPostId});`, (err) => {
+        if (err) {
+            sendError(err);
+        }
+    });
+
+    conn.query(`SELECT * FROM posts WHERE id = ${downvotedPostId};`, (err, result) => {
+        if (err) {
+            sendError(err);
+        }
+        res.status(200).json(result[0])
     })
 
 })
