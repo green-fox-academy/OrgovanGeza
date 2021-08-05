@@ -41,25 +41,19 @@ app.get('/posts', (req, res) => {
 })
 
 app.post('/posts', (req, res) => {
-    const newPost = req.body;
+    const newPost = {
+        ...req.body, // ==> kicsomagol mindent, ami a bodyban van, és felsorolja ide. Mivel a bodyban egy JSON van a szükséges kulcs-érték párokkal, ezért ez pont jó
+        timestamp
+    }
 
     conn.query(`INSERT INTO posts (title, url, timestamp) 
-               VALUES (?,?,?);`, [`${newPost.title}`, `${newPost.url}`, `${timestamp}`], (err, result) => {
+               VALUES (?,?,?);`, [`${newPost.title}`, `${newPost.url}`, `${newPost.timestamp}`], (err, result) => {
         if (err) {
             console.log(err);
             res.send(500);
         }
-
-        const newPostDetails = result.insertId;
-
-        conn.query(`SELECT * FROM reddit.posts WHERE id = ${newPostDetails} ;`, (err, newresult) => {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            res.status(200).json( newresult[0] );
-        });
-       
+        newPost.id = result.insertId;
+        res.status(200).json(newPost);
     })
 
 })
