@@ -94,6 +94,37 @@ app.put('/posts/:id/downvote', (req, res) => {
 
 })
 
+app.put('/posts/:id', (req, res) => {
+    const modifiedPost = {
+        id: req.params.id,
+        ...req.body
+    };
+
+    if (modifiedPost.title !== undefined) {
+        conn.query(`UPDATE posts SET title = '${modifiedPost.title}' WHERE (id = ${modifiedPost.id});`, (err) => {
+            if (err) {
+                sendError(err, res);
+            }
+        });
+    }
+
+    if (modifiedPost.url !== undefined) {
+        conn.query(`UPDATE posts SET url = '${modifiedPost.url}' WHERE (id = ${modifiedPost.id});`, (err) => {
+            if (err) {
+                sendError(err, res);
+            }
+        });
+    }
+
+    conn.query(`SELECT * FROM posts WHERE id = ${modifiedPost.id};`, (err, result) => {
+        if (err) {
+            sendError(err, res);
+        }
+        res.status(200).json(result[0])
+    })
+
+})
+
 app.delete('/posts/:id', (req, res) => {
     const deletedPost = {
         id: req.params.id
@@ -115,7 +146,7 @@ app.delete('/posts/:id', (req, res) => {
         }
         res.status(200).json(deletedPost);
     })
-    
+
 })
 
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
