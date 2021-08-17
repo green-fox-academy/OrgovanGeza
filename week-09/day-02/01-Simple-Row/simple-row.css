@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+    color: #fff;
+}
+
+.wrapper{
+    display: grid;
+    background: purple;
+    width: 500px;
+    height: 200px;
+    grid-template-columns: 2fr 3fr 2fr;
+}
+
+.wrapper > *{
+    margin: 10px;
+}
+
+.left{
+    background: yellow;
+    color: white;
+
+}
+
+.mid{
+    background: green;
+
+}
+
+.right{
+    background: yellow;
+
+}
