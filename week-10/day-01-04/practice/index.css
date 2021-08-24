@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 500px;
+    max-height: fit-content;
+}
+
+#player{
+    height: 200px;
+    background: rgb(151, 146, 146);
+}
