@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background: #ECF0F1;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+h2{
+    margin-top: 50px;
+}
+
+#question-manager, #question-creater {
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 15px;
+    width: 500px;
+}
+
+#create button {
+    width: 100px;
+    margin: 4px;
+    min-height: 28px;
+    max-height: fit-content;
+    color: #FFFFFF;
+    background: #3498DB;
+    border: none;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-left: 0;
+    border-right: 0;
+    width: 100%;
+}
+
+table td{
+    border: 1px solid rgb(192, 192, 192);
+    border-left: 0;
+    border-right: 0;
+    padding: 10px;
+}
+
+table tr:first-child td{
+    border-top: 0;
+}
+table tr:last-child td {
+    border-bottom: 0;
+}
+
+table button{
+    border: none;
+    background: none;
+    color: red;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+table .question{
+    text-align: left;
+}
+
+p{
+    align-self: flex-start;
+}
+
+.answer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+
+}
+
+input[type="radio"]{
+    margin: 3px;
+}
+
+.textinput{
+    width: 100%;
+}
+
+
+.answer .textinput{
+    margin: 0 10px;
+}
+
+#question-creater button{
+    align-self: center;
+    margin-top: 20px;
+}
+
+.bordered{
+    border-top: 1px solid rgb(192, 192, 192);
+}
+
+a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    font-size: 10px;
+}
+

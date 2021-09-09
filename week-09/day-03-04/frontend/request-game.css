@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+    background: #ECF0F1;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#trivia {
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#trivia h3 {
+    margin-top: 0;
+}
+
+button {
+    width: 100%;
+    margin: 4px;
+    min-height: 28px;
+    max-height: fit-content;
+    color: #FFFFFF;
+    background: #3498DB;
+    border: none;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-size: 10px;
+}
+
+a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
+.correct {
+    background: #27AE60;
+}
+
+.false {
+    background: #ae2727;
+}
