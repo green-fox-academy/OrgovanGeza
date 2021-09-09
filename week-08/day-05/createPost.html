@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Reddit Page</title>
+    <link rel="stylesheet" href="homeStyle.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div id="picture">
+            <img id="space" src="static/img/header.jpg" alt="amazing universe view">
+            <p> SPACE</p>
+        </div>
+        <div id="redditname">
+            <p>/r/space: news, articles and discussion</p>
+        </div>
+    </header>
+
+    <form action="http://localhost:3000/posts" method="post" id="new-post">
+        <div class="row">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div class="row">
+            <label for="url">URL</label>
+            <input type="url" name="url" id="url">
+        </div>
+        <div class="row">
+            <input type="submit" value="SUBMIT">
+        </div>
+
+
+    </form>
+
+
+
+    <script src="./createPostScript.js"></script>
+</body>
+
+</html>
