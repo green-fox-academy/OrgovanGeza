@@ -1,6 +1,4 @@
-body {
-    color: tomato;
-  }
+
 
 .cocktails{
     width:600px;
@@ -16,6 +14,12 @@ body {
 
   table tr:nth-child(odd) {
    background-color: #fff;
+  }
+
+  td{
+    background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(20, 3, 248));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   th{

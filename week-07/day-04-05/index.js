@@ -2,11 +2,14 @@
 import express, { json } from 'express';
 import mysql from 'mysql2';
 import fs from 'fs';
+import cors from 'cors';
+
 
 const app = express();
 const PORT = 3000;
 const pw = fs.readFileSync('pw.txt', 'utf-8');
 app.use(json());
+app.use(cors());
 const timestamp = Math.floor(Date.now() / 1000);
 
 app.get('/hello', (req, res) => res.send('hello world'))
