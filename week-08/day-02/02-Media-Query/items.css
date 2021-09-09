@@ -1,0 +1,33 @@
+.container{
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+
+}
+
+.item{
+    height: 100px;
+    min-width: 200px;
+}
+
+.green{
+    background: green;
+    flex-grow: 1;
+}
+
+.yellow{
+    background: yellow;
+    flex-grow: 2;
+}
+
+.purple{
+    background: purple;
+    flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+    .item{
+        flex-wrap: wrap;
+    }
+}

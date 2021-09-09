@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="./table.css" type="text/css" rel="stylesheet" />
+    <title>Fancy Table</title>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td data-currency>50000</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td data-currency>10000</td>
+            </tr>
+            <tr>
+                <td>March</td>
+                <td data-currency>85000</td>
+            </tr>
+            <tr>
+                <td>April</td>
+                <td data-currency>56000</td>
+            </tr>
+            <tr>
+                <td>May</td>
+                <td data-currency>98000</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let salesNums = document.querySelectorAll('td[data-currency]');
+        for (let i = 0, len = salesNums.length; i < len; i++) {
+            let num = Number(salesNums[i].innerHTML)
+                .toLocaleString('en');
+            salesNums[i].innerHTML = num;
+        }
+    </script>
+</body>
+
+</html>
