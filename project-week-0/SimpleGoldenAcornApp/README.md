@@ -1,0 +1,1 @@
+https://github.com/green-fox-academy/teaching-materials/tree/master/project-phase/0th-week-projects/react/react-without-redux
