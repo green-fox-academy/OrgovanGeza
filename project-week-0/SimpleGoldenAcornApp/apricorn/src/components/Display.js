@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function Display() {
-    return (
-        <div>
-            
-        </div>
-    )
+function Display({ currAmount }) {
+  return <div>{currAmount}</div>;
 }
+
+Display.propTypes = {
+  currAmount: PropTypes.number.isRequired,
+};
+
+export default Display;
